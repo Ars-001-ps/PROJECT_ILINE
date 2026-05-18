@@ -1,7 +1,7 @@
 from app import app, db
 from models import Employee
 from mimesis import Person
-from mimesis.locales import Locate
+from mimesis.locales import Locale
 import random
 
 person = Person(Locate.RU)
@@ -17,7 +17,7 @@ salary_ranges = {
 # ~ ГЕНЕРИРУЕМ ЗАРПЛАТУ ПО ДОЛЖНОСТИ:
 def get_salary(position):
     min_salary, max_salary = salary_ranges[position]
-    return round(random.randit(min_salary, max_salary), -2)
+    return round(random.randint(min_salary, max_salary), -2)
 
 # ~ СОЗДАЕМ ОБЬЕКТ СОТРУДНИКА С ЗАРПЛАТОЙ ПОД ЕГО ДОЛЖНОСТЬ:
 def hire_employee(full_name, position, manager_id = None):
