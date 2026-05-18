@@ -4,7 +4,7 @@ from mimesis import Person
 from mimesis.locales import Locale
 import random
 
-person = Person(Locate.RU)
+person = Person(Locale.RU)
 
 salary_ranges = {
     'CEO': (500000, 800000),
