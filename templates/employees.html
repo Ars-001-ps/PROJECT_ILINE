@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Сотрудники</title>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <h1> Список сотрудников</h1>
+    <table border='1'>
+        <tr>
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th>Дата найма</th>
+            <th>Зарплата</th>
+            <th>ID начальника</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.full_name }}</td>
+            <td>{{ emp.position }}</td>
+            <td>{{ emp.hire_date }}</td>
+            <td>{{ emp.salary }}</td>
+            <td>{{ emp.manager_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
