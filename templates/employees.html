@@ -8,8 +8,15 @@
 
 <body>
     <h1> Список сотрудников</h1>
+    
+    <form method = 'get' action = '/employees'>
+        <input type = 'text' name = 'search' placeholder = "Поиск по фамилии и имени">
+        <button type = 'submit'>Найти</button>
+    </form>
+
     <table border='1'>
         <tr>
+            <th>ID</th>
             <th>ФИО</th>
             <th>Должность</th>
             <th>Дата найма</th>
@@ -18,6 +25,7 @@
         </tr>
         {% for emp in employees %}
         <tr>
+            <td>{{ emp.id }}</td>
             <td>{{ emp.full_name }}</td>
             <td>{{ emp.position }}</td>
             <td>{{ emp.hire_date }}</td>
