@@ -16,12 +16,13 @@
 
     <table border='1'>
         <tr>
-            <th>ID</th>
-            <th>ФИО</th>
-            <th>Должность</th>
-            <th>Дата найма</th>
-            <th>Зарплата</th>
-            <th>ID начальника</th>
+            <th><a href = "/employees?sort=id&order={{ 'desc' if current_sort == 'id' and current_order == 'asc' else 'asc' }}">ID</a></th>
+            <th><a href = "/employees?sort=full_name&order={{ 'desc' if current_sort == 'full_name' and current_order == 'asc' else 'asc' }}">Фамилия имя</a></th>
+            <th><a href = "/employees?sort=position&order={{ 'desc' if current_sort == 'position' and current_order == 'asc' else 'asc' }}">Должность</a></th>
+            <th><a href = "/employees?sort=hire_date&order={{ 'desc' if current_sort == 'hire_date' and current_order == 'asc' else 'asc' }}">Дата найма</a></th>
+            <th><a href = "/employees?sort=salary&order={{ 'desc' if current_sort == 'salary' and current_order == 'asc' else 'asc' }}">Зарплата</a></th>
+            <th><a href = "/employees?sort=manager_id&order={{ 'desc' if current_sort == 'manager_id' and current_order == 'asc' else 'asc' }}">ID Начальника</a></th>
+            <th>Смена начальника</th>
         </tr>
         {% for emp in employees %}
         <tr>
@@ -31,6 +32,13 @@
             <td>{{ emp.hire_date }}</td>
             <td>{{ emp.salary }}</td>
             <td>{{ emp.manager_id }}</td>
+            <td> <form method="POST" action="/update_manager">
+                <input type = 'hidden' name = 'emp_id' value = '{{ emp.id }}'>
+                <input type = 'number' name = 'new_manager_id' placeholder = 'Новый ID начальника'>
+
+                <button type = 'submit'>Сменить</button>
+            </form>
+        </td>
         </tr>
         {% endfor %}
     </table>
